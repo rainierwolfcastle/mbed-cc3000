@@ -3,7 +3,7 @@
 
 GCC_BIN =
 PROJECT = mbed_cc3000
-OBJECTS = ./main.o ./cc3000_host_driver/cc3000_common.o ./cc3000_host_driver/evnt_handler.o ./cc3000_host_driver/hci.o ./cc3000_host_driver/netapp.o ./cc3000_host_driver/nvmem.o ./cc3000_host_driver/security.o ./cc3000_host_driver/socket.o ./cc3000_host_driver/wlan.o
+OBJECTS = ./main.o ./cc3000_host_driver/cc3000_common.o ./cc3000_host_driver/evnt_handler.o ./cc3000_host_driver/hci.o ./cc3000_host_driver/netapp.o ./cc3000_host_driver/nvmem.o ./cc3000_host_driver/security.o ./cc3000_host_driver/socket.o ./cc3000_host_driver/wlan.o ./ccspi.o
 SYS_OBJECTS = ./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM/cmsis_nvic.o ./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM/system_MKL25Z4.o ./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM/mbed_overrides.o ./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM/startup_MKL25Z4.o ./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM/board.o ./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM/retarget.o 
 INCLUDE_PATHS = -I. -I./mbed -I./mbed/TARGET_KL25Z -I./mbed/TARGET_KL25Z/TARGET_Freescale -I./mbed/TARGET_KL25Z/TARGET_Freescale/TARGET_KLXX -I./mbed/TARGET_KL25Z/TARGET_Freescale/TARGET_KLXX/TARGET_KL25Z -I./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM 
 LIBRARY_PATHS = -L./mbed/TARGET_KL25Z/TOOLCHAIN_GCC_ARM 

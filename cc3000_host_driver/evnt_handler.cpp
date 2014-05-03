@@ -50,7 +50,7 @@
 #include "wlan.h"
 #include "socket.h"
 #include "netapp.h"
-#include "spi.h"
+#include "ccspi.h"
 
  
 
