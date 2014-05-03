@@ -46,7 +46,6 @@
 #include "cc3000_host_driver/netapp.h"
 #include "cc3000_host_driver/evnt_handler.h"
 #include "cc3000_host_driver/cc3000_common.h"
-// #include "cc3000_host_driver/debug.h"
 
 extern uint8_t g_csPin, g_irqPin, g_vbatPin, g_IRQnum, g_SPIspeed;
 
@@ -68,9 +67,9 @@ extern uint8_t g_csPin, g_irqPin, g_vbatPin, g_IRQnum, g_SPIspeed;
 #define eSPI_STATE_READ_EOT             (8)
 
 // CC3000 chip select + SPI config
-// #define CC3000_ASSERT_CS { digitalWrite(g_csPin, LOW); SpiConfigPush(); }
+// #define CC3000_ASSERT_CS { digitalWrite(g_csPin, LOW); }
 // CC3000 chip deselect + SPI restore
-// #define CC3000_DEASSERT_CS {  digitalWrite(g_csPin, HIGH); SpiConfigPop(); }
+// #define CC3000_DEASSERT_CS {  digitalWrite(g_csPin, HIGH); }
 
 
 /* smartconfig flags (defined in Adafruit_CC3000.cpp) */
