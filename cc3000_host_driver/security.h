@@ -123,4 +123,8 @@ extern signed long aes_write_key(unsigned char *key);
 
 #endif //CC3000_UNENCRYPTED_SMART_CONFIG
 
+#ifdef  __cplusplus
+}
+#endif // __cplusplus
+
 #endif
