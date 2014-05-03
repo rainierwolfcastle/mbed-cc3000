@@ -99,7 +99,6 @@ extern "C" {
 
 #define  IOCTL_SOCKET_EVENTMASK
 
-#undef ENOBUFS
 #define ENOBUFS                 55          // No buffer space available
 
 #define __FD_SETSIZE            32
@@ -127,6 +126,7 @@ typedef struct _sockaddr_in_t
     in_addr          sin_addr;              // see struct in_addr, below
     char             sin_zero[8];           // zero this if you want to
 } sockaddr_in;
+
 
 typedef unsigned long socklen_t;
 

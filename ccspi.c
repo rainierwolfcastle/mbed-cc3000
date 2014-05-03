@@ -40,13 +40,13 @@
 *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *
 *****************************************************************************/
-#include "mbed.h"
+#include "cmsis.h"
 #include "ccspi.h"
 #include "cc3000_host_driver/hci.h"
 #include "cc3000_host_driver/netapp.h"
 #include "cc3000_host_driver/evnt_handler.h"
 #include "cc3000_host_driver/cc3000_common.h"
-#include "cc3000_host_driver/debug.h"
+// #include "cc3000_host_driver/debug.h"
 
 extern uint8_t g_csPin, g_irqPin, g_vbatPin, g_IRQnum, g_SPIspeed;
 
@@ -321,7 +321,7 @@ long SpiWrite(unsigned char *pUserBuffer, unsigned short usLength)
 
     //   CC3000_DEASSERT_CS;
     // }
-  }
+  // }
 
   /* Due to the fact that we are currently implementing a blocking situation
    * here we will wait till end of transaction */

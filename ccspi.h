@@ -45,12 +45,16 @@
 #ifndef __CCSPI_H__
 #define __CCSPI_H__
 
-#include "mbed.h"
+#include "cmsis.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 #include "cc3000_host_driver/wlan.h"
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 typedef void (*gcSpiHandleRx)(void *p);
 typedef void (*gcSpiHandleTx)(void);
@@ -79,6 +83,10 @@ extern char *sendDriverPatch(unsigned long *Length);
 extern char *sendBootLoaderPatch(unsigned long *Length);
 extern char *sendWLFWPatch(unsigned long *Length);
 extern void SPI_IRQ(void);
+
+#ifdef  __cplusplus
+}
+#endif // __cplusplus
 
 #endif
 
