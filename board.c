@@ -84,16 +84,8 @@ void board_init() {
     void USR_LEDS_init();
     void USR_GPIO_init();
 
-    // int irqnum = 0;
-    // int priority = 3;
-    // for(irqnum = SysTick_IRQn; irqnum < PORTD_IRQn + 1; irqnum++) {
-    //     NVIC_SetPriority((IRQn_Type) irqnum, priority);
-    // }
-
-    // NVIC_SetPriority(SPI0_IRQn, 0x0);     // Wi-Fi SPI interrupt must be higher priority than SysTick
-    // NVIC_SetPriority(PORTA_IRQn, 0x1);
-    // NVIC_SetPriority(SysTick_IRQn, 0x2);  // SysTick set to lower priority than Wi-Fi SPI bus interrupt
-    // // Clear pending interrupt
-    // PORTA->PCR[16] |= PORT_PCR_ISF_MASK;
-    // PORTA->ISFR |= (1 << 16);
+    NVIC_SetPriority(SPI0_IRQn, 0x0);     // Wi-Fi SPI interrupt must be higher priority than SysTick
+    NVIC_SetPriority(PORTA_IRQn, 0x1);
+    NVIC_SetPriority(SysTick_IRQn, 0x2); // SysTick set to lower priority than Wi-Fi SPI bus interrupt
+    NVIC_SetPriority(ADC0_IRQn, 0x3); // ADC is the lowest of all    
 }

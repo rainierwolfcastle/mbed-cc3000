@@ -66,14 +66,13 @@ extern uint8_t g_csPin, g_irqPin, g_vbatPin, g_IRQnum, g_SPIspeed;
 #define eSPI_STATE_READ_FIRST_PORTION   (7)
 #define eSPI_STATE_READ_EOT             (8)
 
-#define WL_MOD_ENABLE_SHIFT             (1 << 13) // Mask to turn-on Wi-Fi module  
-#define WL_MOD_ENABLE_OFF               (FPTA->PDOR &= ~WL_MOD_ENABLE_SHIFT)    
-#define WL_MOD_ENABLE_ON                (FPTA->PDOR |=  WL_MOD_ENABLE_SHIFT)
+#define WL_MOD_ENABLE_OFF               (FPTA->PDOR &= ~(1 << 13))    
+#define WL_MOD_ENABLE_ON                (FPTA->PDOR |=  (1 << 13))
 
 // CC3000 chip select + SPI config
-#define CC3000_ASSERT_CS { (FPTD->PDOR &= ~(1 << 0)); }
+#define CC3000_ASSERT_CS                (FPTD->PDOR &= ~(1 << 0))
 // CC3000 chip deselect + SPI restore
-#define CC3000_DEASSERT_CS { (FPTD->PDOR |= (1 << 0)); }
+#define CC3000_DEASSERT_CS              (FPTD->PDOR |= (1 << 0))
 
 
 /* smartconfig flags (defined in Adafruit_CC3000.cpp) */
@@ -600,10 +599,10 @@ void WriteWlanPin( unsigned char val )
 /**************************************************************************/
 long ReadWlanInterruptPin(void)
 {
-  long r = ((FPTA->PDIR & (1<<16)) ? 1 : 0);
+  long r = ((FPTA->PDIR & (1 << 16)) ? 1 : 0);
   printf("\tCC3000: ReadWlanInterruptPin - %ld\r\n", r);
 
-  return (r);
+  return (FPTA->PDIR & (1 << 16));
 }
 
 /**************************************************************************/
