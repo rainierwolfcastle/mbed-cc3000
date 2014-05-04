@@ -20,13 +20,8 @@ void CC3000_UsynchCallback(long lEventType, char * data, unsigned char length);
 int main() {
   printf("Hello, CC3000!\r\n"); 
 
-  RGB_LEDS_init();
-  USR_LEDS_init();
-  USR_GPIO_init();
-
-  NVIC_SetPriority(SPI0_IRQn, 0x0);
-  NVIC_SetPriority(PORTA_IRQn, 0x1);
-
+  board_init();
+  
   /* Initialise the module */
   printf("Initializing...\r\n");
 

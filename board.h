@@ -56,9 +56,7 @@ extern "C" {
 #define _WL_MOD_ENABLE_OFF     (FPTA->PDOR &= ~_WL_MOD_ENABLE_SHIFT);    
 #define _WL_MOD_ENABLE_ON      (FPTA->PDOR |=  _WL_MOD_ENABLE_SHIFT);  
 
-void RGB_LEDS_init();
-void USR_LEDS_init();
-void USR_GPIO_init();
+void board_init();
 
 #ifdef  __cplusplus
 }
