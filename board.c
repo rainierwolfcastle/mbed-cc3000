@@ -1,5 +1,33 @@
 #include "board.h"
 
+void RGB_LEDS_init(){
+    // RGB_LEDS: turn on clock to portB and Port D for GPIO
+    SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTD_MASK;
+    // RGB_LEDS: set Pin Mux to GPIO mode for PTB18, PTB19, PTD1 
+    PORTB->PCR[18] = PORT_PCR_MUX(1);
+    PORTB->PCR[19] = PORT_PCR_MUX(1);
+    PORTD->PCR[1]  = PORT_PCR_MUX(1);
+    // RGB_LEDS: set outputs to high (off)
+    FPTB->PDOR |= _RED_SHIFT | _GREEN_SHIFT;
+    FPTD->PDOR |= _BLUE_SHIFT;
+    // RGB_LEDS: set pins direction to output
+    FPTB->PDDR |= _RED_SHIFT | _GREEN_SHIFT;
+    FPTD->PDDR |= _BLUE_SHIFT;    
+} 
+
+void USR_LEDS_init(){
+    // USR_LEDS: turn on clock to portB and Port D for GPIO
+    SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTD_MASK;
+    // USR_LEDS: set Pin Mux to GPIO mode for PTB8, PTB9, PTB10
+    PORTB->PCR[8]  = PORT_PCR_MUX(1);
+    PORTB->PCR[9]  = PORT_PCR_MUX(1);
+    PORTB->PCR[10] = PORT_PCR_MUX(1);
+    // USR_LEDS: set outputs to high (off)
+    FPTB->PDOR |= _RED_SHIFT | _GREEN_SHIFT | _LED_D1_SHIFT | _LED_D2_SHIFT | _LED_D3_SHIFT;
+    // USR_LEDS: set pins direction to output
+    FPTB->PDDR |= _RED_SHIFT | _GREEN_SHIFT | _LED_D1_SHIFT | _LED_D2_SHIFT | _LED_D3_SHIFT;
+}
+
 void USR_GPIO_init() {
     // MAX8856 EN1,EN2: turn on clock to portA, portB, portC, portD, portE for GPIO
     SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK | SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTC_MASK | SIM_SCGC5_PORTD_MASK | SIM_SCGC5_PORTE_MASK ;

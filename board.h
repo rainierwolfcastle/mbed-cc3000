@@ -7,6 +7,14 @@
 extern "C" {
 #endif
 
+#define _RED_SHIFT        (1 << 18)                   // RGB_LED Red   LED
+#define _GREEN_SHIFT      (1 << 19)                   // RGB_LED Green LED
+#define _BLUE_SHIFT       (1 << 1)                    // RGB_LED Blue  LED
+
+#define _LED_D1_SHIFT    (1 << 8)                     // USR LED D1
+#define _LED_D2_SHIFT    (1 << 9)                     // USR LED D2
+#define _LED_D3_SHIFT    (1 << 10)                    // USR LED D3  
+
 #define _SPI0_CS_SHIFT         (1 << 0)  
 #define _SPI1_CS_SHIFT         (1 << 4)    
 
@@ -48,6 +56,8 @@ extern "C" {
 #define _WL_MOD_ENABLE_OFF     (FPTA->PDOR &= ~_WL_MOD_ENABLE_SHIFT);    
 #define _WL_MOD_ENABLE_ON      (FPTA->PDOR |=  _WL_MOD_ENABLE_SHIFT);  
 
+void RGB_LEDS_init();
+void USR_LEDS_init();
 void USR_GPIO_init();
 
 #ifdef  __cplusplus
