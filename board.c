@@ -86,7 +86,7 @@ void board_init() {
 
     int irqnum = 0;
     int priority = 3;
-    for(irqnum = SysTick_IRQn; irqnum < PORTB_IRQn + 1; irqnum++) {
+    for(irqnum = SysTick_IRQn; irqnum < PORTD_IRQn + 1; irqnum++) {
         NVIC_SetPriority((IRQn_Type) irqnum, priority);
     }
 
@@ -94,6 +94,6 @@ void board_init() {
     NVIC_SetPriority(PORTA_IRQn, 0x1);
     NVIC_SetPriority(SysTick_IRQn, 0x2);  // SysTick set to lower priority than Wi-Fi SPI bus interrupt
     // Clear pending interrupt
-    PORTA->PCR[16] |=PORT_PCR_ISF_MASK;
+    PORTA->PCR[16] |= PORT_PCR_ISF_MASK;
     PORTA->ISFR |= (1 << 16);
 }

@@ -255,7 +255,7 @@ void SpiReceiveHandler(void *pvBuffer)
 void
 wlan_start(unsigned short usPatchesAvailableAtHost)
 {
-	printf("wlan_start\r\n");
+	printf("SimpleLink_Init_Start\r\n");
 	
 	unsigned long ulSpiIRQState;
 	
@@ -278,8 +278,6 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 	
 	// Check the IRQ line
 	ulSpiIRQState = tSLInformation.ReadWlanInterruptPin();
-
-	printf("ulSpiIRQState %ld\r\n", ulSpiIRQState);
 	
 	// Chip enable: toggle WLAN EN line
 	tSLInformation.WriteWlanPin( WLAN_ENABLE );
@@ -289,7 +287,6 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		// wait till the IRQ line goes low
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
-			printf("waiting for low\r\n");
 		}
 	}
 	else
@@ -297,12 +294,10 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		// wait till the IRQ line goes high and than low
 		while(tSLInformation.ReadWlanInterruptPin() == 0)
 		{
-			printf("waiting for hight/low - low\r\n");
 		}
 		
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
-			printf("waiting for hight/low - high\r\n");
 		}
 	}
 
