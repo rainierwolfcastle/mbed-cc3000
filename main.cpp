@@ -1,5 +1,7 @@
 #include "mbed.h"
 
+#include "board.h"
+
 #include "ccspi.h"
 
 #include "cc3000_host_driver/cc3000_common.h"
@@ -17,6 +19,8 @@ void CC3000_UsynchCallback(long lEventType, char * data, unsigned char length);
 
 int main() {
   printf("Hello, CC3000!\r\n"); 
+
+  USR_GPIO_init();
 
   /* Initialise the module */
   printf("Initializing...\r\n");
