@@ -24,7 +24,7 @@ int main() {
   USR_LEDS_init();
   USR_GPIO_init();
 
-  NVIC_SetPriority(SPI0_IRQn, 0x0);     // Wi-Fi SPI interrupt must be higher priority than SysTick
+  NVIC_SetPriority(SPI0_IRQn, 0x0);
   NVIC_SetPriority(PORTA_IRQn, 0x1);
 
   /* Initialise the module */
