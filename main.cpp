@@ -13,7 +13,7 @@
 #include "cc3000_host_driver/socket.h"
 #include "cc3000_host_driver/wlan.h"
 
-DigitalOut myled(LED1);
+// DigitalOut myled(LED1);
 
 void CC3000_UsynchCallback(long lEventType, char * data, unsigned char length);
 
@@ -43,10 +43,10 @@ int main() {
   printf("ioctl\n\r");
 
   while(1) {
-    myled = 1;
-    wait(0.2);
-    myled = 0;
-    wait(0.2);
+    // myled = 1;
+    // wait(0.2);
+    // myled = 0;
+    // wait(0.2);
   }
 }
 

@@ -99,7 +99,11 @@ extern "C" {
 
 #define  IOCTL_SOCKET_EVENTMASK
 
+#ifndef ENOBUFS
+
 #define ENOBUFS                 55          // No buffer space available
+
+#endif
 
 #define __FD_SETSIZE            32
 
@@ -138,31 +142,39 @@ typedef long int __fd_mask;
 #define __FDELT(d)              ((d) / __NFDBITS)
 #define __FDMASK(d)             ((__fd_mask) 1 << ((d) % __NFDBITS))
 
+#ifndef FD_SET
+
 // fd_set for select and pselect.
 typedef struct
 {
     __fd_mask fds_bits[__FD_SETSIZE / __NFDBITS];
 #define __FDS_BITS(set)        ((set)->fds_bits)
-} cc3000_fd_set;
+} fd_set;
+
+#endif
 
 // We don't use `memset' because this would require a prototype and
 //   the array isn't too big.
 #define __FD_ZERO(set)                               \
   do {                                                \
     unsigned int __i;                                 \
-    cc3000_fd_set *__arr = (set);                            \
-    for (__i = 0; __i < sizeof (cc3000_fd_set) / sizeof (__fd_mask); ++__i) \
+    fd_set *__arr = (set);                            \
+    for (__i = 0; __i < sizeof (fd_set) / sizeof (__fd_mask); ++__i) \
       __FDS_BITS (__arr)[__i] = 0;                    \
   } while (0)
 #define __FD_SET(d, set)       (__FDS_BITS (set)[__FDELT (d)] |= __FDMASK (d))
 #define __FD_CLR(d, set)       (__FDS_BITS (set)[__FDELT (d)] &= ~__FDMASK (d))
 #define __FD_ISSET(d, set)     (__FDS_BITS (set)[__FDELT (d)] & __FDMASK (d))
 
+#ifndef FD_SET
+
 // Access macros for 'fd_set'.
 #define FD_SET(fd, fdsetp)      __FD_SET (fd, fdsetp)
 #define FD_CLR(fd, fdsetp)      __FD_CLR (fd, fdsetp)
 #define FD_ISSET(fd, fdsetp)    __FD_ISSET (fd, fdsetp)
 #define FD_ZERO(fdsetp)         __FD_ZERO (fdsetp)
+
+#endif
 
 //Use in case of Big Endian only
   
@@ -415,8 +427,8 @@ extern long connect(long sd, const sockaddr *addr, long addrlen);
 //!  @sa socket
 //
 //*****************************************************************************
-extern int select(long nfds, cc3000_fd_set *readsds, cc3000_fd_set *writesds,
-                  cc3000_fd_set *exceptsds, struct timeval *timeout);
+extern int select(long nfds, fd_set *readsds, fd_set *writesds,
+                  fd_set *exceptsds, struct timeval *timeout);
 
 //*****************************************************************************
 //

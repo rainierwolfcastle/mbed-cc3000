@@ -22,5 +22,5 @@
 *.x86_64
 *.hex
 
-.DS_Store
-.bin
+*.DS_Store
+*.bin

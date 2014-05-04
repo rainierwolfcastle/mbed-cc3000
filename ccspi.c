@@ -600,8 +600,8 @@ void WriteWlanPin( unsigned char val )
 /**************************************************************************/
 long ReadWlanInterruptPin(void)
 {
-  uint32_t r = (FPTA->PDIR & (1<<16));
-  printf("\tCC3000: ReadWlanInterruptPin - %d\r\n", r);
+  long r = ((FPTA->PDIR & (1<<16)) ? 1 : 0);
+  printf("\tCC3000: ReadWlanInterruptPin - %ld\r\n", r);
 
   return (r);
 }
