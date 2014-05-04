@@ -82,7 +82,6 @@ extern void WlanInterruptDisable();
 extern char *sendDriverPatch(unsigned long *Length);
 extern char *sendBootLoaderPatch(unsigned long *Length);
 extern char *sendWLFWPatch(unsigned long *Length);
-extern void SPI_IRQ(void);
 
 #ifdef  __cplusplus
 }

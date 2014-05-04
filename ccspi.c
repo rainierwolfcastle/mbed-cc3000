@@ -688,7 +688,7 @@ char *sendWLFWPatch(unsigned long *Length) {
  */
 /**************************************************************************/
 
-void SPI_IRQ(void)
+void PORTA_IRQHandler(void)
 {
   ccspi_is_in_irq = 1;
 
